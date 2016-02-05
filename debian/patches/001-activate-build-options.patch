@@ -1,0 +1,42 @@
+diff --git a/build/CMakeLists.txt b/build/CMakeLists.txt
+index ae3ebdb..37d1a5f 100644
+--- a/build/CMakeLists.txt
++++ b/build/CMakeLists.txt
+@@ -176,6 +176,7 @@ if (WITH_STARTUP_SCRIPT STREQUAL "sysv"
+ endif ()
+ 
+ # Configure files.
++option(WITH_DAEMONS "Build daemon files." ON)
+ if (WITH_DAEMONS)
+   if (WITH_STARTUP_SCRIPT STREQUAL "systemd")
+     configure_file("${PROJECT_SOURCE_DIR}/script/systemd/cbd.service.in"
+@@ -220,6 +221,7 @@ if (WITH_DAEMONS)
+   endif ()
+ endif ()
+ 
++option(WITH_CONFIG_FILES "Build config files." ON)
+ if (WITH_CONFIG_FILES)
+   configure_file("${PROJECT_SOURCE_DIR}/config/poller-module.xml.in"
+     "${PROJECT_SOURCE_DIR}/config/poller-module.xml"
+@@ -1788,6 +1790,13 @@ else ()
+   message(STATUS "    - Startup script             ${WITH_STARTUP_SCRIPT}")
+ endif ()
+ message(STATUS "    - Module                     ${MODULE_LIST}")
++if(WITH_CONFIG_FILES)
++  message(STATUS "    - Config files               enabled")
++endif ()
++if(WITH_DAEMONS)
++  message(STATUS "    - Daemon files               enabled")
++endif ()
++
+ message(STATUS "")
+ message(STATUS "  Install")
+ message(STATUS "    - Prefix                     ${CMAKE_INSTALL_PREFIX}")
+@@ -1796,6 +1805,7 @@ message(STATUS "    - Library prefix             ${PREFIX_LIB}")
+ message(STATUS "    - Modules prefix             ${PREFIX_MODULES}")
+ message(STATUS "    - Include prefix             ${PREFIX_INC}")
+ message(STATUS "    - Configuration prefix       ${PREFIX_CONF}")
++
+ if (NOT WITH_STARTUP_SCRIPT STREQUAL "no")
+   message(STATUS "    - Startup dir                ${STARTUP_DIR}")
+ endif ()

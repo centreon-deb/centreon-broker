@@ -1,0 +1,60 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+PACKAGE=centreon-broker
+PACKAGEDIR=debian/$(PACKAGE)
+
+# Uncomment this to turn on verbose mode.
+export DH_VERBOSE=1
+
+# to run with quilt use this instead:
+# dh  --with quilt $@
+
+%:
+	dh --with quilt --sourcedirectory=build $@
+
+override_dh_auto_configure:
+	dh_auto_configure -O--sourcedirectory=build \
+	  -- \
+	    -DWITH_PREFIX_CONF=$(DESTDIR)/etc/centreon-broker  \
+	    -DWITH_USER=centreon-broker  \
+	    -DWITH_GROUP=centreon-broker \
+	    -DWITH_CONFIG_FILES=1 \
+	    -DWITH_DAEMONS=1 \
+	    -DWITH_STARTUP_SCRIPT=1
+
+
+override_dh_auto_configure:
+	dh_auto_configure -O--sourcedirectory=build \
+	  -- \
+	    -DWITH_PREFIX_CONF=$(DESTDIR)/etc/centreon-broker  \
+	    -DWITH_USER=centreon-broker  \
+	    -DWITH_GROUP=centreon-broker
+
+override_dh_auto_install:
+	dh_auto_install -O--sourcedirectory=build
+	# We don't need the include files.
+	cd $(PACKAGEDIR) && rm -fr \
+	  usr/include
+
+override_dh_clean:
+	dh_clean -O--sourcedirectory=build || true
+	rm -fr \
+	  core/inc/com/centreon/broker/version.hh \
+	  build/CMakeCache.txt \
+	  build/CMakeFiles \
+	  build/cmake_install.cmake \
+	  build/install_manifest.txt \
+	  build/Makefile \
+	  build/__ \
+	  build/*/CMakeFiles \
+	  build/*/Makefile \
+	  build/*/cmake_install.cmake \
+	  build/*/__ \
+	  script/cbd.default \
+	  script/cbd.init \
+	  script/watchdog.xml \
+	  config/cbmod.cfg \
+	  config/central-broker.xml \
+	  config/central-rrd.xml \
+	  config/poller-module.xml

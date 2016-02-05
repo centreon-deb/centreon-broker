@@ -1,0 +1,26 @@
+Source: centreon-broker
+Section: net
+Priority: extra
+Maintainer: Sébastien Gross <seb-ppa@chezwam.org>
+Build-Depends: debhelper (>= 7.0.50), quilt (>=0.46-7),
+ libqt4-dev (>= 4.7), libqt4-sql-mysql, librrd-dev, libgnutls-dev
+Standards-Version: 3.9.5
+Homepage: https://www.centreon.com/en/products/centreon/centreon-broker/
+Vcs-Browser: https://github.com/centreon/centreon-broker
+Vcs-Git: https://github.com/centreon/centreon-broker.git
+
+Package: centreon-broker
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, adduser
+Description: monitoring addon fully compatible with Nagios and Centreon
+ Centreon Broker offers an effective new way to store your monitoring
+ results provided by Centreon Engine in a central and structured
+ database. With its flexible core engine, you can now decide exactly how
+ your data will streamed over the network. These transfers are also
+ extremely fast and optimized.
+ .
+ If required, you will be able to set up an auxiliary database dedicated to
+ monitoring only a part of your IT infrastructure.
+ .
+ By setting up such fail-overs that are activated when the primary database
+ is down, you will better guarantee no data loss for your Centreon users.

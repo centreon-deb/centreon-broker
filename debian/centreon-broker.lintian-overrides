@@ -1,0 +1,3 @@
+centreon-broker: binary-without-manpage usr/bin/cbd
+centreon-broker: binary-without-manpage usr/bin/cbwd
+centreon-broker: shlib-without-versioned-soname usr/lib/cbmod.so cbmod.so

@@ -1,0 +1,31 @@
+diff --git a/script/debian/cbd.init.d.in b/script/debian/cbd.init.d.in
+index ee28a63..ad3411f 100755
+--- a/script/debian/cbd.init.d.in
++++ b/script/debian/cbd.init.d.in
+@@ -22,8 +22,8 @@
+ #
+ ### BEGIN INIT INFO
+ # Provides:             cbd
+-# Required-Start:       $local_fs $network
+-# Required-Stop:        $local_fs $network
++# Required-Start:       $remote_fs $local_fs $network
++# Required-Stop:        $remote_fs $local_fs $network
+ # Default-Start:        2 3 4 5
+ # Default-Stop:         0 1 6
+ # Short-Description:    Start daemon cbd at boot
+@@ -133,13 +133,13 @@ case "$1" in
+     do_stop
+     do_start
+     ;;
+-  reload)
++  reload|force-reload)
+     do_reload
+     ;;
+   status)
+     status_all
+     ;;
+   *)
+-    echo "Usage: ${daemon_name} {start|stop|restart|status}"
++    echo "Usage: ${daemon_name} {start|stop|restart|reload|force-reload|status}"
+     exit 3
+ esac
