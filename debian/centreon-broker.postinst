@@ -32,7 +32,7 @@ fixperms() {
 
 case "$1" in
     configure)
-	adduser
+	add_user
 	fixperms
     ;;
 
