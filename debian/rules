@@ -57,4 +57,5 @@ override_dh_clean:
 	  config/cbmod.cfg \
 	  config/central-broker.xml \
 	  config/central-rrd.xml \
-	  config/poller-module.xml
+	  config/poller-module.xml \
+	  script/master.run
