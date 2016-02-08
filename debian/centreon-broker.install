@@ -1,1 +1,1 @@
-config/cbmod.cfg etc/centreon-broker
+config/*.xml etc/centreon-broker
