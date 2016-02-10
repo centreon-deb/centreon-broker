@@ -1,2 +1,3 @@
 var/log/centreon-broker
+var/lib/centreon-broker
 var/run/centreon-broker
