@@ -24,7 +24,7 @@ add_user() {
 }
 
 fixperms() {
-    for d in /var/lib/centreon-broker /var/log/centreon-broker; do
+    for d in /var/lib/centreon-broker /var/log/centreon-broker /var/run/centreon-broker; do
 	dpkg-statoverride --list $d > /dev/null || \
 	    dpkg-statoverride --update --add centreon-broker centreon-broker 700 $d
     done
