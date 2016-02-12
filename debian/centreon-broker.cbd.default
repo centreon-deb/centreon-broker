@@ -1,0 +1,12 @@
+# -*- sh -*-
+# Centreon Broker defaults
+
+# Which user should be used to launch the centreon boker daemons
+USER=centreon-broker
+
+# Set to "YES" for automatic start
+RUN_AT_STARTUP=YES
+
+# List of modules that should be started at boot time. If you use default
+# centreon configuration these ones would be generated and enough.
+MODULES="central-broker central-module central-rrd"

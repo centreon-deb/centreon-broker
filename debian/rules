@@ -18,10 +18,7 @@ override_dh_auto_configure:
 	  -- \
 	    -DWITH_PREFIX_CONF=$(DESTDIR)/etc/centreon-broker  \
 	    -DWITH_USER=centreon-broker  \
-	    -DWITH_GROUP=centreon-broker \
-	    -DWITH_CONFIG_FILES=1 \
-	    -DWITH_DAEMONS=1 \
-	    -DWITH_STARTUP_SCRIPT=1
+	    -DWITH_GROUP=centreon-broker
 
 
 override_dh_auto_configure:
@@ -36,6 +33,9 @@ override_dh_auto_install:
 	# We don't need the include files.
 	cd $(PACKAGEDIR) && rm -fr \
 	  usr/include
+
+override_dh_installinit:
+	dh_installinit --name cbd
 
 override_dh_clean:
 	dh_clean -O--sourcedirectory=build || true
