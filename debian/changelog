@@ -1,3 +1,9 @@
+centreon-broker (2.11.4-1) trusty; urgency=low
+
+  * Bump to 2.11.4
+
+ -- Sébastien Gross <seb-ppa@chezwam.org>  Mon, 08 Aug 2016 15:26:54 +0200
+
 centreon-broker (2.11.1-1) trusty; urgency=low
 
   * Initial release.
